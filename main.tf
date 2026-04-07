@@ -2,6 +2,8 @@ provider "azurerm" {
   features {}
 }
 
+# В задании сказано, что RG может быть создана отдельно или здесь. 
+# Используем data, если она уже есть, или resource, если создаем с нуля:
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location

@@ -46,7 +46,7 @@ resource "azurerm_virtual_machine_extension" "install_script" {
 
   settings = <<SETTINGS
     {
-        "commandToExecute": "bash -c 'echo \"${base64encode(file("install-app.sh"))}\" | base64 --decode > install-app.sh && bash install-app.sh'"
+        "commandToExecute": "bash -c 'cat <<EOF > install-app.sh\n${file("${path.cwd}/install-app.sh")}\nEOF\n bash install-app.sh'"
     }
 SETTINGS
 }

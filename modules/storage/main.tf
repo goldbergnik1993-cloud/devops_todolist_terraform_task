@@ -1,11 +1,11 @@
 resource "random_string" "st_name" {
-  length  = 8
+  length  = 12
   special = false
   upper   = false
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = "st${random_string.st_name.result}"
+  name                     = "sa${random_string.st_name.result}"
   resource_group_name      = var.rg_name
   location                 = var.location
   account_tier             = "Standard"
